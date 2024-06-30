@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar";
 import { useNavigate } from "react-router-dom";
 import axios from "../api/axios";
 import Dialog from "../components/Dialog";
+import Loader from "../components/Loader";
 
 function AdminRegister() {
   const navigate = useNavigate();
@@ -12,6 +13,7 @@ function AdminRegister() {
   const [adminKey, setAdminKey] = useState("");
   const [dialog, setDialog] = useState(false);
   const [message, setMessage] = useState("");
+  const [loaderState, setLoaderState] = useState(false);
 
   const closeDialogState = () => {
     setDialog(false);
@@ -22,29 +24,33 @@ function AdminRegister() {
   };
 
   const handleSubmit = async (e) => {
+    setLoaderState(true);
     e.preventDefault();
     try {
-      const res = await axios.post(
-        `/auth/register`,
-        {
-          name,
-          username,
-          password,
-          adminKey,
-        }
-      );
+      const res = await axios.post(`/auth/register`, {
+        name,
+        username,
+        password,
+        adminKey,
+      });
       if (!res.data.exists) {
+        setLoaderState(false);
         openDialog();
         setMessage(res.data.message);
-        if (res.data.admin)
+        if (res.data.admin) {
           setTimeout(() => {
+            setLoaderState(false);
             navigate("/admin/login");
-          }, 5000);
+          }, 20000);
+
+        }
       } else if (res.data.exists) {
+        setLoaderState(false);
         openDialog();
         setMessage(res.data.message);
       }
     } catch (err) {
+      setLoaderState(false);
       console.log(err);
     }
   };
@@ -56,6 +62,7 @@ function AdminRegister() {
         message={message}
         closeDialogState={closeDialogState}
       />
+      <Loader loaderState={loaderState} />
       <div className="pt-28 h-screen flex flex-col items-center justify-center  gap-14 md:pt-0">
         <div className="bg-slate-50 p-20 rounded-lg md:p-10">
           <h1 className="font-bold text-2xl mb-5 text-center">

@@ -132,8 +132,16 @@ router.post("/logout", async (req, res) => {
     );
 
     if (user) {
-      res.clearCookie("M_At");
-      res.clearCookie("M_Rt");
+      res.clearCookie("M_At", {
+        httpOnly: true,
+        secure: true,
+        sameSite: 'None',
+      });
+      res.clearCookie("M_Rt", {
+        httpOnly: true,
+        secure: true,
+        sameSite: 'None',
+      });
       res
         .status(200)
         .json({ message: "Logout success", success: true, status: 200 });

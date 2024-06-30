@@ -20,10 +20,10 @@ router.post("/update-daily", ensureAuthentication, async (req, res) => {
         const deletedData = await Eggmodel.findByIdAndDelete(allEgg[0]._id);
         if (deletedData) {
           const finalList = await Eggmodel.find();
-          res.status(200).send(finalList.reverse());
+          res.status(200).json({data: finalList.reverse(), message: "Updated Successfully"});
         }
       } else {
-        res.send(allEgg.reverse());
+        res.status(200).json({ data : allEgg.reverse(), message: 'Updated Successfully'});
       }
     }
   } catch (err) {

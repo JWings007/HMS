@@ -2,13 +2,14 @@ import axios from "../api/axios";
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
-function Navbar() {
+function Navbar({setLoader}) {
   const location = useLocation();
   const navigate = useNavigate();
   const [toggle, setToggle] = useState(false);
   const [username, setUserName] = useState("");
 
   const handleLogout = async () => {
+    setLoader(true)
     try {
       const res = await axios.post(
         "/auth/logout",
@@ -19,13 +20,17 @@ function Navbar() {
       );
 
       if (res.data.success) {
+        setLoader(false)
         localStorage.removeItem("username");
         localStorage.removeItem("name");
-        navigate("/admin/login");
+          navigate("/admin/login");
+       
       } else {
+        setLoader(false)
         alert("Please try again...!");
       }
     } catch (err) {
+      setLoader(false)
       alert("Please try again...!");
     }
   };
@@ -35,9 +40,9 @@ function Navbar() {
   }, []);
 
   return (
-    <div className="w-full h-24 flex items-center justify-between px-20 md:px-10 fixed bg-white z-50">
+    <div className="w-full h-24 flex items-center justify-between px-20 md:px-10 fixed bg-white z-50 vsm:px-5">
       <div className="justify-between w-full hidden lg:flex lg:relative">
-        <h1 className="font-bold text-2xl">HMS EGG DIST.</h1>
+        <h1 className="font-bold text-2xl vsm:text-xl">HMS EGG DIST.</h1>
         <i
           className="fi fi-rr-bars-sort cursor-pointer"
           onClick={() => setToggle(!toggle)}
@@ -77,7 +82,7 @@ function Navbar() {
             CONTACT
           </li>
         </ul>
-        <p>Copyright &copy; 2024. HMS Egg Distributions</p>
+        <p className="vsm:text-sm">Copyright &copy; 2024. HMS Egg Distributions</p>
       </div>
       <h1 className="font-bold text-2xl lg:hidden">HMS EGG DIST.</h1>
       <ul className="flex items-center justify-center gap-20 font-extralight lg:hidden">

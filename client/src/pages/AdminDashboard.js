@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar";
 import Dialog from "../components/Dialog";
 import axios from "../api/axios";
 import { useNavigate } from "react-router-dom";
+import Loader from "../components/Loader";
 
 function AdminDashboard() {
   const date = new Date();
@@ -14,10 +15,12 @@ function AdminDashboard() {
   const [medium, setMedium] = useState(0);
   const [small, setSmall] = useState(0);
   const [bullet, setBullet] = useState(0);
+  const [loaderState, setLoaderState] = useState(false);
   const [loader, setLoader] = useState(false);
   const [message, setMessage] = useState("");
 
   const handleUpdate = async (e) => {
+    setLoaderState(true);
     e.preventDefault();
     if (type === "daily") {
       const res = await axios.post(
@@ -32,7 +35,10 @@ function AdminDashboard() {
           withCredentials: true,
         }
       );
-      setEggData(res.data);
+      setEggData(res.data.data);
+      setMessage(res.data.message);
+      openDialog();
+      setLoaderState(false);
     } else {
       const res = await axios.post(
         `/user/update-all`,
@@ -41,6 +47,7 @@ function AdminDashboard() {
           withCredentials: true,
         }
       );
+      setLoaderState(false);
       setMessage(res.data.message);
       openDialog();
     }
@@ -59,12 +66,14 @@ function AdminDashboard() {
   };
 
   useEffect(() => {
+    setLoaderState(true);
     const authCheck = async () => {
       const res = await axios.get("/auth/authcheck", {
         withCredentials: true,
       });
-      if (res.data.authenticated) navigate("/admin/dashboard");
-      else {
+      if (res.data.authenticated) {
+        navigate("/admin/dashboard");
+      } else {
         navigate("/admin/login");
       }
     };
@@ -78,6 +87,7 @@ function AdminDashboard() {
     try {
       authCheck();
       getEggdata();
+      setLoaderState(false)
     } catch (error) {
       console.log(error);
     }
@@ -85,7 +95,8 @@ function AdminDashboard() {
 
   return (
     <>
-      <Navbar />
+      <Navbar setLoader={setLoaderState}/>
+      <Loader loaderState={loaderState} />
       <div className="pt-28 px-20 pb-14 h-screen">
         <div>
           <div className="flex gap-2">

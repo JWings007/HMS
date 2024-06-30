@@ -2,7 +2,11 @@
 module.exports = {
   content: ["./src/**/*.{html,js}"],
   theme: {
-    extend: {},
+    extend: {
+      boxShadow: {
+        'lg': '0px 0px 7px #00a93e'
+      },
+    },
     screens: {
       "2xl": { max: "1535px" },
       // => @media (max-width: 1535px) { ... }
@@ -18,6 +22,9 @@ module.exports = {
 
       sm: { max: "639px" },
       // => @media (max-width: 639px) { ... }
+
+      vsm: { max: "480px" },
+      // => @media (max-width: 480px) { ... }
     },
   },
   plugins: [],

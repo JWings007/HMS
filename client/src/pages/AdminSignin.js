@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar";
 import { useNavigate } from "react-router-dom";
 import Dialog from "../components/Dialog";
 import axios from "../api/axios";
+import Loader from "../components/Loader";
 
 function AdminSignin() {
   const navigate = useNavigate();
@@ -10,6 +11,7 @@ function AdminSignin() {
   const [password, setPassword] = useState("");
   const [dialog, setDialog] = useState(false);
   const [message, setMessage] = useState("");
+  const [loaderState, setLoaderState] = useState(false);
 
   const closeDialogState = () => {
     setDialog(false);
@@ -20,6 +22,7 @@ function AdminSignin() {
   };
 
   const handleSubmit = async (e) => {
+    setLoaderState(true);
     e.preventDefault();
     try {
       const res = await axios.post(
@@ -34,15 +37,16 @@ function AdminSignin() {
       );
 
       if (!res.data.username) {
+        setLoaderState(false);
         openDialog();
         setMessage(res.data.message);
       } else if (res.data.username && res.data.password) {
         localStorage.setItem("username", res.data.user.username);
         localStorage.setItem("name", res.data.user.name);
-        setTimeout(() => {
-          navigate("/admin/dashboard");
-        }, 3000);
+        setLoaderState(false);
+        navigate("/admin/dashboard");
       } else if (!res.data.password) {
+        setLoaderState(false);
         openDialog();
         setMessage(res.data.message);
       }
@@ -76,6 +80,7 @@ function AdminSignin() {
         message={message}
         closeDialogState={closeDialogState}
       />
+      <Loader loaderState={loaderState} />
       <div className="pt-28 h-screen flex flex-col items-center justify-center  gap-14 md:pt-0">
         <div className="bg-slate-50 p-20 rounded-lg md:p-10">
           <h1 className="font-bold text-2xl mb-8">Login</h1>

@@ -6,6 +6,29 @@ body {
     overflow-x: hidden;
 }
 
+.loader {
+  width: 50px;
+  aspect-ratio: 1;
+  box-shadow: 0 0 0 3px #63ff68 inset;
+  border-radius: 50%;
+  position: relative;
+  animation: l6 1.5s linear infinite;
+}
+.loader:before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  box-shadow: inherit;
+  width: 25px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+}
+@keyframes l6 {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 ::-webkit-scrollbar {
     width: 5px;
   }
