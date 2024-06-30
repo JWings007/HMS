@@ -5,7 +5,7 @@ const ensureAuthentication = async (req, res, next) => {
   const storedAccessToken = req.cookies.M_At;
   const storedRefreshToken = req.cookies.M_Rt;
 
-  if (!storedAccessToken && !storedRefreshToken) {
+  if (!storedRefreshToken) {
     return res.json({
       message: "Session expired, Login again.",
       status: 401,
