@@ -44,14 +44,14 @@ const ensureAuthentication = async (req, res, next) => {
           res.cookie("M_At", accessToken, {
             httpOnly: true,
             secure: true,
-            sameSite: 'none',
+            sameSite: 'None',
             maxAge: 3 * 60 * 60 * 1000,
           });
 
           res.cookie("M_Rt", refreshToken, {
             httpOnly: true,
             secure: true,
-            sameSite: 'none',
+            sameSite: 'None',
             maxAge: 3 * 24 * 60 * 60 * 1000,
           });
 
