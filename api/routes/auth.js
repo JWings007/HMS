@@ -79,11 +79,13 @@ router.post("/login", async (req, res) => {
 
         res.cookie("M_At", newAccessToken, {
           httpOnly: true,
+          sameSite: 'none',
           maxAge: 60 * 1000,
         });
 
         res.cookie("M_Rt", newRefreshToken, {
           httpOnly: true,
+          sameSite: 'none',
           maxAge: 10 * 24 * 60 * 60 * 1000,
         });
 
