@@ -95,12 +95,14 @@ function AdminSignin() {
                 placeholder="Enter Username"
                 className="text-sm outline-none bg-slate-200 h-11 w-80 pl-6 rounded-lg"
                 onChange={(e) => setUserName(e.target.value)}
+                required
               />
               <input
                 type="password"
                 placeholder="Enter Password"
                 className="text-sm outline-none bg-slate-200 h-11 w-80 pl-6 rounded-lg"
                 onChange={(e) => setPassword(e.target.value)}
+                required
               />
               <button className="bg-green-300 px-10 py-3 hover:bg-green-400 transition-all rounded-lg">
                 Login
