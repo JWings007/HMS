@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "../api/axios";
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
@@ -11,7 +11,7 @@ function Navbar() {
   const handleLogout = async () => {
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/auth/logout",
+        "/auth/logout",
         { username: localStorage.getItem("username") },
         {
           withCredentials: true,
