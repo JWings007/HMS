@@ -21,7 +21,10 @@ function Navbar() {
       if (res.data.success) {
         localStorage.removeItem("username");
         localStorage.removeItem("name");
-        navigate("/admin/login");
+        setTimeout(() => {
+          navigate("/admin/login");
+        }, 5000);
+       
       } else {
         alert("Please try again...!");
       }
