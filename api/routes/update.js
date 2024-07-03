@@ -20,10 +20,15 @@ router.post("/update-daily", ensureAuthentication, async (req, res) => {
         const deletedData = await Eggmodel.findByIdAndDelete(allEgg[0]._id);
         if (deletedData) {
           const finalList = await Eggmodel.find();
-          res.status(200).json({data: finalList.reverse(), message: "Updated Successfully"});
+          res.status(200).json({
+            data: finalList.reverse(),
+            message: "Updated Successfully",
+          });
         }
       } else {
-        res.status(200).json({ data : allEgg.reverse(), message: 'Updated Successfully'});
+        res
+          .status(200)
+          .json({ data: allEgg.reverse(), message: "Updated Successfully" });
       }
     }
   } catch (err) {
@@ -31,30 +36,30 @@ router.post("/update-daily", ensureAuthentication, async (req, res) => {
   }
 });
 
-router.post("/update-all", ensureAuthentication, async (req, res) => {
+router.post("/update-all/:type", ensureAuthentication, async (req, res) => {
   const { large, medium, small, bullet } = req.body;
 
   try {
     await TypeModel.findOneAndUpdate(
-      { verity: "Large" },
+      { verity: "Large", color: req.params.type },
       {
         $set: { price: large },
       }
     );
     await TypeModel.findOneAndUpdate(
-      { verity: "Medium" },
+      { verity: "Medium", color: req.params.type },
       {
         $set: { price: medium },
       }
     );
     await TypeModel.findOneAndUpdate(
-      { verity: "Medium Small" },
+      { verity: "Medium Small", color: req.params.type },
       {
         $set: { price: small },
       }
     );
     await TypeModel.findOneAndUpdate(
-      { verity: "Bullet" },
+      { verity: "Bullet", color: req.params.type },
       {
         $set: { price: bullet },
       }
@@ -65,12 +70,38 @@ router.post("/update-all", ensureAuthentication, async (req, res) => {
   }
 });
 
+router.patch("/update-price", ensureAuthentication, async (req, res) => {
+  const { id, newPrice } = req.body;
+  try {
+    if (id) {
+      const updatedData = await EggModel.findOneAndUpdate(
+        { _id: id },
+        {
+          $set: { price: newPrice },
+        }
+      );
+      if (updatedData) {
+        const eggData = await Eggmodel.find();
+        res.status(200).json({
+          message: "Price changed successfully",
+          data: eggData.reverse(),
+        });
+      } else
+        res.json({
+          message: "Failed! Try again",
+          status: 501,
+          data: eggData.reverse(),
+        });
+    }
+  } catch (err) {
+    res.json({ message: "Internal server error, try again", status: 501 });
+  }
+});
 
 router.get("/egg-data", async (req, res) => {
   const allEgg = await EggModel.find();
   res.send(allEgg.reverse());
 });
-
 
 router.get("/all-egg-data", async (req, res) => {
   const allEgg = await TypeModel.find();

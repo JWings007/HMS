@@ -42,7 +42,6 @@ function AdminRegister() {
             setLoaderState(false);
             navigate("/admin/login");
           }, 20000);
-
         }
       } else if (res.data.exists) {
         setLoaderState(false);

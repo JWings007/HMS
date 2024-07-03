@@ -1,7 +1,7 @@
 import React from "react";
 import Slider from "react-slick";
 
-function Gallery() {
+function Gallery({ place }) {
   const settings = {
     dots: true,
     infinite: true,

@@ -11,13 +11,15 @@ function AdminDashboard() {
   const [type, setType] = useState("daily");
   const [eggData, setEggData] = useState();
   const navigate = useNavigate();
-  const [large, setLarge] = useState(0);
-  const [medium, setMedium] = useState(0);
-  const [small, setSmall] = useState(0);
-  const [bullet, setBullet] = useState(0);
+  const [large, setLarge] = useState("");
+  const [medium, setMedium] = useState("");
+  const [small, setSmall] = useState("");
+  const [bullet, setBullet] = useState("");
   const [loaderState, setLoaderState] = useState(false);
   const [loader, setLoader] = useState(false);
   const [message, setMessage] = useState("");
+  const [editprice, setEditprice] = useState(null);
+  const [updatedPrice, setUpdatedPrice] = useState(0);
 
   const handleUpdate = async (e) => {
     setLoaderState(true);
@@ -26,7 +28,7 @@ function AdminDashboard() {
       const res = await axios.post(
         `/user/update-daily`,
         {
-          date: `${date.getDate()}-${
+          date: `${date.getDate() + 1}-${
             date.getMonth() + 1
           }-${date.getFullYear()}`,
           price: dailyEggPrice,
@@ -41,7 +43,7 @@ function AdminDashboard() {
       setLoaderState(false);
     } else {
       const res = await axios.post(
-        `/user/update-all`,
+        `/user/update-all/${type}`,
         { large, medium, small, bullet },
         {
           withCredentials: true,
@@ -50,6 +52,29 @@ function AdminDashboard() {
       setLoaderState(false);
       setMessage(res.data.message);
       openDialog();
+    }
+  };
+
+  const handlePriceUpdate = async (id) => {
+    setLoaderState(true);
+    try {
+      const res = await axios.patch(
+        "/user/update-price",
+        { id, newPrice: updatedPrice },
+        {
+          withCredentials: true,
+        }
+      );
+      if (res) {
+        setEggData(res.data.data);
+        setLoaderState(false);
+        setEditprice(null);
+        setMessage(res.data.message);
+        openDialog();
+      }
+    } catch (err) {
+      setLoaderState(false);
+      console.log(err);
     }
   };
 
@@ -87,7 +112,7 @@ function AdminDashboard() {
     try {
       authCheck();
       getEggdata();
-      setLoaderState(false)
+      setLoaderState(false);
     } catch (error) {
       console.log(error);
     }
@@ -95,10 +120,10 @@ function AdminDashboard() {
 
   return (
     <>
-      <Navbar setLoader={setLoaderState}/>
+      <Navbar setLoader={setLoaderState} />
       <Loader loaderState={loaderState} />
       <div className="pt-28 px-20 pb-14 h-screen">
-        <div>
+        <div className="flex flex-col gap-3">
           <div className="flex gap-2">
             <input
               type="radio"
@@ -110,15 +135,27 @@ function AdminDashboard() {
             />
             <label htmlFor="daily">Update single egg price</label>
           </div>
-          <div className="flex gap-2">
+          <div className="flex gap-2 items-center">
             <input
               type="radio"
               id="all"
               name="type"
-              value={"all"}
+              value={"white"}
               onChange={handleChange}
             />
-            <label htmlFor="all">Update all egg price</label>
+            <label htmlFor="all">Update White Egg price</label>
+            <div className="h-5 w-5 bg-white border-black border-2"></div>
+          </div>
+          <div className="flex gap-2 items-center">
+            <input
+              type="radio"
+              id="all"
+              name="type"
+              value={"brown"}
+              onChange={handleChange}
+            />
+            <label htmlFor="all">Update Brown Egg price</label>
+            <div className="h-5 w-5 bg-amber-500 border-black border-2"></div>
           </div>
         </div>
         <Dialog
@@ -155,14 +192,15 @@ function AdminDashboard() {
           ) : (
             <div className="w-1/2 md:w-full">
               <h1 className="font-bold text-2xl mb-5">
-                Enter different egg's prices
+                Enter{" "}
+                {type === "white" ? "White Eggs price" : "Brown Egg price"}
               </h1>
               <form
                 className="flex flex-col gap-5 md:items-center"
                 name="all-type"
               >
                 <input
-                  type="number"
+                  type="text"
                   placeholder="Large Egg price / piece"
                   className="text-sm outline-none bg-slate-200 h-11 w-80 pl-6 rounded-lg"
                   onChange={(e) => setLarge(e.target.value)}
@@ -170,7 +208,7 @@ function AdminDashboard() {
                   required
                 />
                 <input
-                  type="number"
+                  type="text"
                   placeholder="Medium Egg price / piece"
                   className="text-sm outline-none bg-slate-200 h-11 w-80 pl-6 rounded-lg"
                   onChange={(e) => setMedium(e.target.value)}
@@ -178,7 +216,7 @@ function AdminDashboard() {
                   required
                 />
                 <input
-                  type="number"
+                  type="text"
                   placeholder="Medium small Egg price / piece"
                   className="text-sm outline-none bg-slate-200 h-11 w-80 pl-6 rounded-lg"
                   onChange={(e) => setSmall(e.target.value)}
@@ -186,7 +224,7 @@ function AdminDashboard() {
                   required
                 />
                 <input
-                  type="number"
+                  type="text"
                   placeholder="Bullet Egg price / piece"
                   className="text-sm outline-none bg-slate-200 h-11 w-80 pl-6 rounded-lg"
                   onChange={(e) => setBullet(e.target.value)}
@@ -211,7 +249,9 @@ function AdminDashboard() {
           <div className="w-1/2 flex flex-col gap-8 md:w-full">
             <div className="bg-green-100 px-14 py-5 rounded-lg md:px-8 sm:py-5 sm:w-full">
               <h3 className="font-bold text-2xl md:text-xl sm:text-lg text-center">
-                Egg rate in Bengaluru today: ₹ {eggData ? eggData[0]?.price : 0}
+                Egg rate in Bengaluru today:{" "}
+                <span className="text-red-400">₹</span>{" "}
+                {eggData ? eggData[0]?.price : 0}
               </h3>
             </div>
             {eggData ? (
@@ -233,6 +273,9 @@ function AdminDashboard() {
                     <th className="px-3 py-4 bg-green-200 lg:px-8 sm:px-6 sm:py-4 md:text-xs">
                       Peti
                     </th>
+                    <th className="px-3 py-4 bg-green-200 lg:px-8 sm:px-6 sm:py-4 md:text-xs">
+                      Edit
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
@@ -251,28 +294,69 @@ function AdminDashboard() {
                             i % 2 === 0 ? "bg-slate-100" : "bg-white"
                           } py-3 md:px-0 md:py-4 sm:text-xs`}
                         >
-                          ₹ {item.price.toFixed(2)}
+                          {editprice === i ? (
+                            <div className="relative w-fit overflow-hidden">
+                              <input
+                                className="text-sm outline-none bg-slate-200 h-11 w-42 pl-6 rounded-lg"
+                                type="number"
+                                required
+                                placeholder={item.price}
+                                onChange={(e) =>
+                                  setUpdatedPrice(e.target.value)
+                                }
+                              />
+                              <i
+                                className="fi fi-rr-check bg-green-400 absolute top-0 h-full right-0 pt-[15px] text-sm px-3 cursor-pointer rounded-lg"
+                                onClick={() => handlePriceUpdate(item._id)}
+                              ></i>
+                            </div>
+                          ) : (
+                            <p>
+                              {" "}
+                              <span className="text-red-400">₹</span>{" "}
+                              {item.price.toFixed(2)}
+                            </p>
+                          )}
                         </td>
                         <td
                           className={`text-center ${
                             i % 2 === 0 ? "bg-slate-100" : "bg-white"
                           } py-3 md:px-0 md:py-4 sm:text-xs`}
                         >
-                          ₹ {(item.price * 30).toFixed(2)}
+                          <span className="text-red-400">₹</span>{" "}
+                          {(item.price * 30).toFixed(2)}
                         </td>
                         <td
                           className={`text-center ${
                             i % 2 === 0 ? "bg-slate-100" : "bg-white"
                           } py-3 md:px-0 md:py-4 sm:text-xs`}
                         >
-                          ₹ {(item.price * 100).toFixed(2)}
+                          <span className="text-red-400">₹</span>{" "}
+                          {(item.price * 100).toFixed(2)}
                         </td>
                         <td
                           className={`text-center ${
                             i % 2 === 0 ? "bg-slate-100" : "bg-white"
                           } py-3 md:px-0 md:py-4 sm:text-xs`}
                         >
-                          ₹ {(item.price * 150).toFixed(2)}
+                          <span className="text-red-400">₹</span>{" "}
+                          {(item.price * 210).toFixed(2)}
+                        </td>
+                        <td
+                          className={`text-center ${
+                            i % 2 === 0 ? "bg-slate-100" : "bg-white"
+                          } py-3 md:px-0 md:py-4 sm:text-xs`}
+                        >
+                          <button
+                            className="bg-red-300 px-6 py-1 rounded-lg"
+                            onClick={() => {
+                              if (!editprice && editprice !== 0)
+                                setEditprice(i);
+                              else setEditprice(null);
+                            }}
+                          >
+                            Edit
+                          </button>
                         </td>
                       </tr>
                     );
