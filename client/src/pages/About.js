@@ -39,7 +39,7 @@ function About() {
   return (
     <>
       <Navbar />
-      <div className="pb-20 flex flex-col px-20 pt-28 md:px-10">
+      <div className="pb-20 flex flex-col px-20 pt-28 md:px-10 vsm:px-5">
         <div className="flex h-56 lg:flex-col lg:gap-10 lg:h-fit lg:text-center">
           <div className="w-1/3  flex flex-col items-center justify-center lg:w-full">
             <h2 className="text-3xl font-bold">
@@ -47,10 +47,10 @@ function About() {
             </h2>
           </div>
           <div className="w-2/3  flex flex-col justify-center lg:w-full">
-            <p className="text-black">
+            <p className="text-black vsm:text-sm">
               Welcome to{" "}
               <span className="font-bold text-green-500">
-                HMS EGG DISTRIBUTIONS
+                HMS EGG DISTRIBUTERS
               </span>
               , your trusted source for premium-quality eggs. Founded with a
               passion for delivering freshness and flavor to every table, we are
@@ -76,7 +76,7 @@ function About() {
             </Slider>
           </div>
           <div className=" text-center p-8 md:mt-10 md:px-2 lg:pb-10 lg:w-full">
-            <p className="mt-4 text-normal">
+            <p className="mt-4 text-normal vsm:text-sm">
               <span className="font-bold text-black">
                 Our mission is simple:
               </span>{" "}
@@ -87,13 +87,13 @@ function About() {
               Backed by years of experience in the egg distribution industry, we
               strive to exceed your expectations with every delivery.
             </p>
-            <div className="text-center px-20 py-8 md:px-5  ">
-              <p className="text-normal">
+            <div className="text-center px-20 py-8 md:px-5 vsm:px-0">
+              <p className="text-normal vsm:text-sm">
                 Join us in celebrating the joy of good food and responsible
                 sourcing. Experience the difference that fresh, locally sourced
                 eggs can make in your meals. Thank you for choosing{" "}
                 <span className="font-bold text-green-500">
-                  HMS EGG DISTRIBUTIONS
+                  HMS EGG DISTRIBUTERS
                 </span>{" "}
                 — where quality, freshness, and customer satisfaction are our
                 top priorities.

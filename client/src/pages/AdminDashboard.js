@@ -172,6 +172,7 @@ function AdminDashboard() {
               <form
                 className="flex flex-col gap-5 md:items-center"
                 name="dailyPrice"
+                onSubmit={handleUpdate}
               >
                 <input
                   type="number"
@@ -183,7 +184,6 @@ function AdminDashboard() {
                 />
                 <button
                   className="bg-green-300 px-10 py-2 hover:bg-green-400 transition-all rounded-lg w-40"
-                  onClick={handleUpdate}
                 >
                   Update
                 </button>
@@ -198,6 +198,7 @@ function AdminDashboard() {
               <form
                 className="flex flex-col gap-5 md:items-center"
                 name="all-type"
+                onSubmit={handleUpdate}
               >
                 <input
                   type="text"
@@ -233,7 +234,6 @@ function AdminDashboard() {
                 />
                 <button
                   className="bg-green-300 px-10 py-2 hover:bg-green-400 transition-all rounded-lg w-40"
-                  onClick={handleUpdate}
                 >
                   Update
                 </button>

@@ -6,7 +6,7 @@ function Footer() {
   return (
     <>
       <div className="flex flex-col items-center py-20 gap-4 bg-green-300">
-        <h1 className="font-bold text-2xl">HMS EGG DISTRIBUTIONS</h1>
+        <h1 className="font-bold text-2xl">HMS EGG DISTRIBUTERS</h1>
         <div>
           <ul className="flex gap-10">
             <li

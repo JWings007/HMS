@@ -51,6 +51,7 @@ function Contact() {
               Karnataka - 560039
             </a>
           </div>
+          <h1 className="font-bold">Main Branch ( Bengaluru )</h1>
           <div>
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.3859193107523!2d77.5202278!3d12.9471394!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae3fa22ac2c4ff%3A0xc0aede0efacbcb29!2sH.M.S%20EGG%20DISTRIBUTOR!5e0!3m2!1sen!2sin!4v1720014669293!5m2!1sen!2sin"
@@ -61,6 +62,18 @@ function Contact() {
               referrerPolicy="no-referrer-when-downgrade"
               className="vsm:w-[100%]"
               title="map"
+            ></iframe>
+          </div>
+          <h1 className="font-bold">Branch 2 ( Kolar )</h1>
+          <div>
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3885.377371542152!2d78.13028729999999!3d13.138579899999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3badf1ccd778942f%3A0x896f7e19587059de!2sH.M.S%20NOOR%20EGG%20CENTRE!5e0!3m2!1sen!2sin!4v1720022202072!5m2!1sen!2sin"
+              width="400"
+              height="300"
+              allowFullScreen=""
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              className="vsm:w-[100%]"
             ></iframe>
           </div>
           <div className="flex gap-5">
