@@ -41,7 +41,10 @@ function Contact() {
           </p>
           <div className="flex items-start justify-between w-full lg:flex-col lg:gap-14">
             <div className="flex flex-col gap-5">
-              <h1 className="font-bold text-3xl md:text-xl">Main Branch <span className="bg-green-100 px-3 rounded-md">Bengaluru</span></h1>
+              <h1 className="font-bold text-3xl md:text-xl">
+                Main Branch{" "}
+                <span className="bg-green-100 px-3 rounded-md">Bengaluru</span>
+              </h1>
               <div>
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.3859193107523!2d77.5202278!3d12.9471394!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae3fa22ac2c4ff%3A0xc0aede0efacbcb29!2sH.M.S%20EGG%20DISTRIBUTOR!5e0!3m2!1sen!2sin!4v1720014669293!5m2!1sen!2sin"
@@ -109,10 +112,13 @@ function Contact() {
               </div>
             </div>
             <div className="flex flex-col gap-5">
-              <h1 className="font-bold text-3xl md:text-xl">Branch 2 <span className="bg-green-100 px-3 rounded-md">Kolar</span></h1>
+              <h1 className="font-bold text-3xl md:text-xl">
+                Branch 2{" "}
+                <span className="bg-green-100 px-3 rounded-md">Kolar</span>
+              </h1>
               <div>
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7770.754739918576!2d78.130287!3d13.13858!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3badf1ccd778942f%3A0x896f7e19587059de!2sH.M.S%20NOOR%20EGG%20CENTRE!5e0!3m2!1sen!2sin!4v1720099732384!5m2!1sen!2sin"
+                  src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7770.754739918576!2d78.130287!3d13.13858!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3badf1ccd778942f%3A0x896f7e19587059de!2sH.M.S%20NOOR%20EGG%20CENTRE!5e0!3m2!1sen!2sin!4v1720099987489!5m2!1sen!2sin"
                   width="400"
                   height="300"
                   allowFullScreen=""
@@ -163,61 +169,6 @@ function Contact() {
                 </button>
               </div>
             </div>
-            {/* <div className="flex flex-col gap-5">
-              <h1 className="font-bold text-3xl md:text-xl">Branch 2 <span className="bg-green-100 px-3 rounded-md">Kolar</span></h1>
-              <div>
-              <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.3859193107523!2d77.5202278!3d12.9471394!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae3fa22ac2c4ff%3A0xc0aede0efacbcb29!2sH.M.S%20EGG%20DISTRIBUTOR!5e0!3m2!1sen!2sin!4v1720014669293!5m2!1sen!2sin"
-                  width="400"
-                  height="300"
-                  allowFullScreen=""
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  className="vsm:w-[100%]"
-                  title="map"
-                ></iframe>
-              </div>
-              <div className="flex gap-5">
-                <i className="fi fi-rr-marker text-xl"></i>
-                <a
-                  className="font-bold vsm:text-sm"
-                  href="https://maps.app.goo.gl/L6rkxojpfZrNZoby7"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  MB Rd, Doddapet, Kolar, Karnataka - 563101
-                </a>
-              </div>
-              <div className="flex gap-5">
-                <i className="fi fi-rr-phone-call text-xl"></i>
-                <div className="flex flex-col gap-3">
-                  <p
-                    className="vsm:text-sm cursor-pointer font-semibold"
-                    onClick={() => openDialer(9900956387)}
-                  >
-                    +91 9900956387 (Noor Ahmed)
-                  </p>
-                </div>
-              </div>
-              <div className="flex gap-5">
-                <i className="fi fi-rr-envelope text-xl"></i>
-                <p
-                  className="font-bold vsm:text-sm cursor-pointer"
-                  onClick={() => mail("HMSEGGDISTRIBUTORS87@GMAIL.COM")}
-                >
-                  HMSEGGDISTRIBUTORS87@GMAIL.COM
-                </p>
-              </div>
-              <div>
-                <button
-                  className="flex gap-3 items-center bg-green-300 px-3 py-2 rounded-md hover:bg-green-400 transition-all"
-                  onClick={handleRedirect}
-                >
-                  <i className="fi fi-brands-whatsapp pt-1 text-xl"></i>
-                  <p>Contact Us</p>
-                </button>
-              </div>
-            </div> */}
           </div>
         </div>
       </div>
