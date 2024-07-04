@@ -69,7 +69,7 @@ function Home() {
           ) : null}
 
           {eggData ? (
-            <div className="bg-green-200 px-28 py-8 mt-10 rounded-lg md:px-8 sm:py-5 sm:w-full xs:block hidden">
+            <div className="bg-green-200 px-20 py-8 mt-10 rounded-lg md:px-8 sm:py-5 sm:w-full xs:block hidden">
               <h3 className="font-bold text-4xl md:text-2xl sm:text-xl text-center">
               NECC Egg Rate In Bengaluru Today :
               </h3>
