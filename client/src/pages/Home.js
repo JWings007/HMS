@@ -160,7 +160,7 @@ function Home() {
       </div>
       <div className="mt-10 flex flex-col gap-10 items-center justify-center">
         <h1 className="font-bold text-2xl text-center md:text-lg">
-          Egg price of previous five days
+          Egg price of previous days
         </h1>
         {eggData ? (
           <table className="w-1/2 bg-slate-100 rounded-lg border-solid border-slate-100 border-2 overflow-hidden">
