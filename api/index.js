@@ -8,9 +8,7 @@ var mongoDB = process.env.MONGODB_URI;
 const AuthRouter = require("./routes/auth");
 const UserRouter = require("./routes/update");
 
-mongoose.connect(mongoDB, {
-  useUnifiedTopology: true,
-}).then((res) => {
+mongoose.connect(mongoDB).then((res) => {
   console.log("Database connected successfully..");
 });
 

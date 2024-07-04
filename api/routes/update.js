@@ -98,6 +98,32 @@ router.patch("/update-price", ensureAuthentication, async (req, res) => {
   }
 });
 
+router.put('/delete-price', ensureAuthentication, async ( req, res )=> {
+  const {id} = req.body;
+
+  try {
+    if (id) {
+      const updatedData = await EggModel.findByIdAndDelete(
+        { _id: id }
+      );
+      if (updatedData) {
+        const eggData = await Eggmodel.find();
+        res.status(200).json({
+          message: "Deleted successfully",
+          data: eggData.reverse(),
+        });
+      } else
+        res.json({
+          message: "Failed! Try again",
+          status: 501,
+          data: eggData.reverse(),
+        });
+    }
+  } catch (err) {
+    res.json({ message: "Internal server error, try again", status: 501 });
+  }
+})
+
 router.get("/egg-data", async (req, res) => {
   const allEgg = await EggModel.find();
   res.send(allEgg.reverse());
