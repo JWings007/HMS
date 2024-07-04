@@ -63,17 +63,17 @@ function Home() {
           {eggData ? (
             <div className="bg-green-200 px-32 py-8 mt-10 rounded-lg md:px-8 sm:py-5 sm:w-full xs:hidden">
               <h3 className="font-bold text-4xl md:text-2xl sm:text-xl text-center leading-[50px]">
-              NECC Egg Rate In Bengaluru Today : ₹ {eggData[0]?.price}
+              NECC Egg Rate In Bengaluru Today : <span className="text-amber-600">₹ {eggData[0]?.price}</span>
               </h3>
             </div>
           ) : null}
 
           {eggData ? (
-            <div className="bg-green-200 px-32 py-8 mt-10 rounded-lg md:px-8 sm:py-5 sm:w-full xs:block hidden">
+            <div className="bg-green-200 px-32 py-8 mt-10 rounded-lg md:px-2 sm:py-5 sm:w-full xs:block hidden">
               <h3 className="font-bold text-4xl md:text-2xl sm:text-xl text-center">
               NECC Egg Rate In Bengaluru Today :
               </h3>
-              <h3 className="font-bold text-4xl md:text-2xl sm:text-xl text-center">₹ {eggData[0]?.price}</h3>
+              <h3 className="font-bold text-4xl md:text-2xl sm:text-xl text-center text-amber-600">₹ {eggData[0]?.price}</h3>
             </div>
           ) : null}
 
