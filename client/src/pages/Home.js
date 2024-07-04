@@ -48,7 +48,7 @@ function Home() {
     <>
       <Navbar />
       <Loader loaderState={loaderState} />
-      <div className="px-20 pb-14 relative h-fit pt-44 md:px-10 vsm:px-5">
+      <div className="px-20 pb-14 relative h-fit pt-44 md:px-10 vsm:px-2">
         <img
           src={
             "https://images.unsplash.com/photo-1498654077810-12c21d4d6dc3?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
@@ -57,21 +57,21 @@ function Home() {
           className="absolute top-0 left-0 min-w-full -z-10 object-cover opacity-40 h-full object-top"
         />
         <div className="flex flex-col items-center z-10">
-          <h1 className="text-center text-green-400 font-bold text-7xl md:text-5xl sm:text-4xl">
-            HMS EGG DISTRIBUTERS
+          <h1 className="text-center text-green-400 font-bold text-7xl sm:text-6xl vsm:text-[2.8rem]">
+            HMS EGG DISTRIBUTORS
           </h1>
           {eggData ? (
-            <div className="bg-green-200 px-32 py-8 mt-10 rounded-lg md:px-8 sm:py-5 sm:w-full vsm:hidden">
-              <h3 className="font-bold text-4xl md:text-2xl sm:text-xl text-center">
-                Egg rate in Bengaluru today: ₹ {eggData[0]?.price}
+            <div className="bg-green-200 px-32 py-8 mt-10 rounded-lg md:px-8 sm:py-5 sm:w-full xs:hidden">
+              <h3 className="font-bold text-4xl md:text-2xl sm:text-xl text-center leading-[50px]">
+              NECC Egg Rate In Bengaluru Today : ₹ {eggData[0]?.price}
               </h3>
             </div>
           ) : null}
 
           {eggData ? (
-            <div className="bg-green-200 px-32 py-8 mt-10 rounded-lg md:px-8 sm:py-5 sm:w-full vsm:block hidden">
+            <div className="bg-green-200 px-32 py-8 mt-10 rounded-lg md:px-8 sm:py-5 sm:w-full xs:block hidden">
               <h3 className="font-bold text-4xl md:text-2xl sm:text-xl text-center">
-                Egg rate in Bengaluru today
+              NECC Egg Rate In Bengaluru Today :
               </h3>
               <h3 className="font-bold text-4xl md:text-2xl sm:text-xl text-center">₹ {eggData[0]?.price}</h3>
             </div>

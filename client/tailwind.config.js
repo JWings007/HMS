@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       boxShadow: {
-        'lg': '0px 0px 7px #00a93e'
+        'lg': '0px 0px 7px #d2d2d2'
       },
     },
     screens: {
@@ -21,6 +21,9 @@ module.exports = {
       // => @media (max-width: 767px) { ... }
 
       sm: { max: "639px" },
+      // => @media (max-width: 639px) { ... }
+
+      xs: { max: "570px" },
       // => @media (max-width: 639px) { ... }
 
       vsm: { max: "500px" },

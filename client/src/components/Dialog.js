@@ -13,7 +13,7 @@ function Dialog({ dialogState, closeDialogState, message }) {
           <div className="flex flex-col items-start justify-between gap-4 px-5 py-4">
             <h1 className="text-sm">{message}</h1>
             <button
-              className="px-6 py-2 bg-red-300 rounded-lg text-sm"
+              className="px-6 py-2 bg-red-300 hover:bg-red-400 transition-all rounded-lg text-sm"
               onClick={closeDialogState}
             >
               Close

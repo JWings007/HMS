@@ -78,6 +78,30 @@ function AdminDashboard() {
     }
   };
 
+  const handleDelete = async (id) => {
+    setLoaderState(true);
+    try {
+      console.log(id)
+      const res = await axios.put(
+        "/user/delete-price",
+        { id },
+        {
+          withCredentials: true,
+        }
+      );
+      if(res) {
+        setEggData(res.data.data);
+        setLoaderState(false);
+        setMessage(res.data.message);
+        openDialog();
+      }
+      
+    } catch (err) {
+      setLoaderState(false);
+      console.log(err);
+    }
+  };
+
   const handleChange = (e) => {
     setType(e.target.value);
   };
@@ -122,8 +146,8 @@ function AdminDashboard() {
     <>
       <Navbar setLoader={setLoaderState} />
       <Loader loaderState={loaderState} />
-      <div className="pt-28 px-20 pb-14 h-screen">
-        <div className="flex flex-col gap-3">
+      <div className="pt-28 px-20 h-screen">
+        <div className="flex flex-col gap-3 mb-10">
           <div className="flex gap-2">
             <input
               type="radio"
@@ -133,28 +157,28 @@ function AdminDashboard() {
               className=""
               onChange={handleChange}
             />
-            <label htmlFor="daily">Update single egg price</label>
+            <label htmlFor="daily" className="cursor-pointer font-semibold">Update single egg price</label>
           </div>
           <div className="flex gap-2 items-center">
             <input
               type="radio"
-              id="all"
+              id="white"
               name="type"
               value={"white"}
               onChange={handleChange}
             />
-            <label htmlFor="all">Update White Egg price</label>
+            <label htmlFor="white" className="cursor-pointer font-semibold">Update White Egg price</label>
             <div className="h-5 w-5 bg-white border-black border-2"></div>
           </div>
           <div className="flex gap-2 items-center">
             <input
               type="radio"
-              id="all"
+              id="brown"
               name="type"
               value={"brown"}
               onChange={handleChange}
             />
-            <label htmlFor="all">Update Brown Egg price</label>
+            <label htmlFor="brown" className="cursor-pointer font-semibold">Update Brown Egg price</label>
             <div className="h-5 w-5 bg-amber-500 border-black border-2"></div>
           </div>
         </div>
@@ -163,7 +187,7 @@ function AdminDashboard() {
           closeDialogState={closeDialog}
           message={message}
         />
-        <div className=" md:flex-col md:px-0 md:text-center flex items-center justify-between flex-row">
+        <div className=" md:flex-col md:px-0 md:text-center flex items-start justify-between flex-row">
           {type === "daily" ? (
             <div className="w-1/2 md:w-full">
               <h1 className="font-bold text-2xl mb-5">
@@ -348,14 +372,18 @@ function AdminDashboard() {
                           } py-3 md:px-0 md:py-4 sm:text-xs`}
                         >
                           <button
-                            className="bg-red-300 px-6 py-1 rounded-lg"
+                            className="bg-green-200 hover:bg-green-300 transition-all px-6 py-1 rounded-lg"
                             onClick={() => {
                               if (!editprice && editprice !== 0)
                                 setEditprice(i);
                               else setEditprice(null);
                             }}
                           >
+                            <i className="fi fi-rr-file-edit pr-3"></i>
                             Edit
+                          </button>
+                          <button className="ml-4 hover:bg-red-400 transition-all px-2 pt-1 rounded-md" onClick={() => {handleDelete(item._id)}}>
+                          <i class="fi fi-rr-trash"></i>
                           </button>
                         </td>
                       </tr>

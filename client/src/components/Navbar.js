@@ -2,14 +2,14 @@ import axios from "../api/axios";
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
-function Navbar({setLoader}) {
+function Navbar({ setLoader }) {
   const location = useLocation();
   const navigate = useNavigate();
   const [toggle, setToggle] = useState(false);
   const [username, setUserName] = useState("");
 
   const handleLogout = async () => {
-    setLoader(true)
+    setLoader(true);
     try {
       const res = await axios.post(
         "/auth/logout",
@@ -20,27 +20,30 @@ function Navbar({setLoader}) {
       );
 
       if (res.data.success) {
-        setLoader(false)
+        setLoader(false);
         localStorage.removeItem("username");
         localStorage.removeItem("name");
-          navigate("/admin/login");
-       
+        navigate("/admin/login");
       } else {
-        setLoader(false)
+        setLoader(false);
         alert("Please try again...!");
       }
     } catch (err) {
-      setLoader(false)
+      setLoader(false);
       alert("Please try again...!");
     }
   };
 
   useEffect(() => {
     setUserName(localStorage.getItem("name"));
-  }, []);
+    if(toggle)
+      document.body.classList.add('overflow-hidden')
+    else
+      document.body.classList.remove('overflow-hidden')
+  }, [navigate, toggle]);
 
   return (
-    <div className="w-full h-24 flex items-center justify-between px-20 md:px-10 fixed bg-white z-50 vsm:px-5">
+    <div className="w-full h-24 flex items-center justify-between px-20 md:px-10 fixed bg-white z-50 vsm:px-5 md:shadow-lg">
       <div className="justify-between w-full hidden lg:flex lg:relative">
         <h1 className="font-bold text-2xl vsm:text-xl">HMS EGG DIST.</h1>
         <i
@@ -49,7 +52,7 @@ function Navbar({setLoader}) {
         ></i>
       </div>
       <div
-        className={`-z-10 md:flex fixed top-24 right-0 w-full bg-white duration-[.6s] items-center justify-evenly h-screen z-100 flex-col transition-transform ${
+        className={`hidden -z-10 lg:flex fixed top-24 right-0 w-full bg-white duration-[.6s] items-center justify-evenly h-screen z-100 flex-col transition-transform ${
           !toggle ? "-translate-y-full" : "translate-y-0"
         }`}
       >
@@ -82,7 +85,9 @@ function Navbar({setLoader}) {
             CONTACT
           </li>
         </ul>
-        <p className="vsm:text-sm">Copyright &copy; 2024. HMS Egg Distributions</p>
+        <p className="vsm:text-sm">
+          Copyright &copy; 2024. HMS Egg Distributions
+        </p>
       </div>
       <h1 className="font-bold text-2xl lg:hidden">HMS EGG DIST.</h1>
       <ul className="flex items-center justify-center gap-20 font-extralight lg:hidden">
