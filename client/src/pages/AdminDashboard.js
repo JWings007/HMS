@@ -20,6 +20,7 @@ function AdminDashboard() {
   const [message, setMessage] = useState("");
   const [editprice, setEditprice] = useState(null);
   const [updatedPrice, setUpdatedPrice] = useState(0);
+  const [updatedDate, setUpdatedDate] = useState(date.getDate());
 
   const handleUpdate = async (e) => {
     setLoaderState(true);
@@ -28,7 +29,7 @@ function AdminDashboard() {
       const res = await axios.post(
         `/user/update-daily`,
         {
-          date: `${date.getDate() + 1}-${
+          date: `${date.getDate()}-${
             date.getMonth() + 1
           }-${date.getFullYear()}`,
           price: dailyEggPrice,
@@ -81,7 +82,7 @@ function AdminDashboard() {
   const handleDelete = async (id) => {
     setLoaderState(true);
     try {
-      console.log(id)
+      console.log(id);
       const res = await axios.put(
         "/user/delete-price",
         { id },
@@ -89,13 +90,12 @@ function AdminDashboard() {
           withCredentials: true,
         }
       );
-      if(res) {
+      if (res) {
         setEggData(res.data.data);
         setLoaderState(false);
         setMessage(res.data.message);
         openDialog();
       }
-      
     } catch (err) {
       setLoaderState(false);
       console.log(err);
@@ -142,6 +142,10 @@ function AdminDashboard() {
     }
   }, [navigate]);
 
+  useEffect(() => {
+    setUpdatedDate(date.setDate(date.getDate() + 1));
+  }, [date]);
+
   return (
     <>
       <Navbar setLoader={setLoaderState} />
@@ -157,7 +161,9 @@ function AdminDashboard() {
               className=""
               onChange={handleChange}
             />
-            <label htmlFor="daily" className="cursor-pointer font-semibold">Update single egg price</label>
+            <label htmlFor="daily" className="cursor-pointer font-semibold">
+              Update single egg price
+            </label>
           </div>
           <div className="flex gap-2 items-center">
             <input
@@ -167,7 +173,9 @@ function AdminDashboard() {
               value={"white"}
               onChange={handleChange}
             />
-            <label htmlFor="white" className="cursor-pointer font-semibold">Update White Egg price</label>
+            <label htmlFor="white" className="cursor-pointer font-semibold">
+              Update White Egg price
+            </label>
             <div className="h-5 w-5 bg-white border-black border-2"></div>
           </div>
           <div className="flex gap-2 items-center">
@@ -178,7 +186,9 @@ function AdminDashboard() {
               value={"brown"}
               onChange={handleChange}
             />
-            <label htmlFor="brown" className="cursor-pointer font-semibold">Update Brown Egg price</label>
+            <label htmlFor="brown" className="cursor-pointer font-semibold">
+              Update Brown Egg price
+            </label>
             <div className="h-5 w-5 bg-amber-500 border-black border-2"></div>
           </div>
         </div>
@@ -206,9 +216,7 @@ function AdminDashboard() {
                   step="0.01"
                   required
                 />
-                <button
-                  className="bg-green-300 px-10 py-2 hover:bg-green-400 transition-all rounded-lg w-40"
-                >
+                <button className="bg-green-300 px-10 py-2 hover:bg-green-400 transition-all rounded-lg w-40">
                   Update
                 </button>
               </form>
@@ -256,9 +264,7 @@ function AdminDashboard() {
                   step="0.01"
                   required
                 />
-                <button
-                  className="bg-green-300 px-10 py-2 hover:bg-green-400 transition-all rounded-lg w-40"
-                >
+                <button className="bg-green-300 px-10 py-2 hover:bg-green-400 transition-all rounded-lg w-40">
                   Update
                 </button>
                 <button
@@ -382,8 +388,13 @@ function AdminDashboard() {
                             <i className="fi fi-rr-file-edit pr-3"></i>
                             Edit
                           </button>
-                          <button className="ml-4 hover:bg-red-400 transition-all px-2 pt-1 rounded-md" onClick={() => {handleDelete(item._id)}}>
-                          <i class="fi fi-rr-trash"></i>
+                          <button
+                            className="ml-4 hover:bg-red-400 transition-all px-2 pt-1 rounded-md"
+                            onClick={() => {
+                              handleDelete(item._id);
+                            }}
+                          >
+                            <i class="fi fi-rr-trash"></i>
                           </button>
                         </td>
                       </tr>
