@@ -42,6 +42,12 @@ function Home() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    window.onload = function () {
+      const scrollingText = document.querySelector(".scrolling-text-content");
+      const text = scrollingText.textContent;
+      scrollingText.textContent = text + " " + text;
+    };
+    document.title = "Hms Egg Distributors | Home";
   }, [pathname]);
 
   return (
@@ -63,7 +69,8 @@ function Home() {
           {eggData ? (
             <div className="bg-green-200 px-32 py-8 mt-10 rounded-lg md:px-8 sm:py-5 sm:w-full xs:hidden">
               <h3 className="font-bold text-4xl md:text-2xl sm:text-xl text-center leading-[50px]">
-              NECC Egg Rate In Bengaluru Today : <span className="text-amber-600">₹ {eggData[0]?.price}</span>
+                NECC Egg Rate In Bengaluru Today :{" "}
+                <span className="text-amber-500">₹ {eggData[0]?.price}</span>
               </h3>
             </div>
           ) : null}
@@ -71,9 +78,11 @@ function Home() {
           {eggData ? (
             <div className="bg-green-200 px-32 py-8 mt-10 rounded-lg md:px-2 sm:py-5 sm:w-full xs:block hidden">
               <h3 className="font-bold text-4xl md:text-2xl sm:text-xl text-center">
-              NECC Egg Rate In Bengaluru Today :
+                NECC Egg Rate In Bengaluru Today :
               </h3>
-              <h3 className="font-bold text-4xl md:text-2xl sm:text-xl text-center text-amber-600">₹ {eggData[0]?.price}</h3>
+              <h3 className="font-bold text-4xl md:text-2xl sm:text-xl text-center text-amber-500">
+                ₹ {eggData[0]?.price}
+              </h3>
             </div>
           ) : null}
 
@@ -139,6 +148,14 @@ function Home() {
               </table>
             ) : null}
           </div>
+        </div>
+      </div>
+      <div className="scrolling-text h-12 flex items-center bg-green-200">
+        <div className="scrolling-text-content">
+          <h1 className="text-xl">
+            Please contact us only if you are interested in making a purchase of
+            at least 15,000 eggs.
+          </h1>
         </div>
       </div>
       <div className="mt-10 flex flex-col gap-10 items-center justify-center">

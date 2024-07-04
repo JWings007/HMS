@@ -22,6 +22,7 @@ function Contact() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    document.title = 'Hms Egg Distributors | Contact'
   }, [pathname]);
   return (
     <>

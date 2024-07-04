@@ -45,6 +45,30 @@ body {
     background: #0f9f3c;
   }
 
+  .scrolling-text {
+    width: 100%;
+    overflow: hidden;
+    font-size: 2rem;
+    white-space: nowrap;
+    position: relative;
+}
+
+.scrolling-text-content {
+    display: inline-block;
+    padding-left: 100%;
+    animation: scroll-text 15s linear infinite;
+    white-space: nowrap;
+}
+
+@keyframes scroll-text {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
