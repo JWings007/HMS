@@ -42,11 +42,6 @@ function Home() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    window.onload = function () {
-      const scrollingText = document.querySelector(".scrolling-text-content");
-      const text = scrollingText.textContent;
-      scrollingText.textContent = text + " " + text;
-    };
     document.title = "Hms Egg Distributors | Home";
   }, [pathname]);
 
