@@ -16,7 +16,7 @@ mongoose.set("strictQuery", false);
 
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL1,
+    origin: 'https://www.hmsegg.com',
     credentials: true,
   })
 );
