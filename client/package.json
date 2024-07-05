@@ -22,7 +22,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "proxy": "https://hms-egg-distributions.vercel.app",
+  "proxy": "https://hmsegg.com",
   "eslintConfig": {
     "extends": [
       "react-app",
