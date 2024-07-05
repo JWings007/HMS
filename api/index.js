@@ -14,12 +14,27 @@ mongoose.connect(mongoDB).then((res) => {
 
 mongoose.set("strictQuery", false);
 
-app.use(
-  cors({
-    origin: process.env.FRONTEND_URL,
-    credentials: true,
-  })
-);
+const allowedOrigins = [
+  'https://example1.com',
+  'https://example2.com',
+  'https://example3.com',
+  'https://www.hmsegg.com'
+];
+
+// CORS options to match exact origins
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    } else {
+      return callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
 
 app.use(express.json());
 app.use(cookieParser());
