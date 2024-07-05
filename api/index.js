@@ -16,9 +16,8 @@ mongoose.set("strictQuery", false);
 
 const allowedOrigins = [
   'https://www.hmsegg.com',
-  'https://www.hmsegg.com/',
   'https://hmsegg.com',
-  'https://hmsegg.com/'
+  'hmsegg.com',
 ];
 
 // CORS options to match exact origins
