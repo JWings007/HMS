@@ -70,7 +70,7 @@ function Home() {
             <div className="bg-green-200 px-32 py-8 mt-10 rounded-lg md:px-8 sm:py-5 sm:w-full xs:hidden">
               <h3 className="font-bold text-4xl md:text-2xl sm:text-xl text-center leading-[50px]">
                 NECC Egg Rate In Bengaluru Today :{" "}
-                <span className="text-amber-500">₹ {eggData[0]?.price}</span>
+                <span className="text-amber-500">₹ {eggData[0]?.price.toFixed(2)}</span>
               </h3>
             </div>
           ) : null}
@@ -81,7 +81,7 @@ function Home() {
                 NECC Egg Rate In Bengaluru Today :
               </h3>
               <h3 className="font-bold text-4xl md:text-2xl sm:text-xl text-center text-amber-500">
-                ₹ {eggData[0]?.price}
+                ₹ {eggData[0]?.price.toFixed(2)}
               </h3>
             </div>
           ) : null}

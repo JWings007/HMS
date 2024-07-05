@@ -15,10 +15,7 @@ mongoose.connect(mongoDB).then((res) => {
 mongoose.set("strictQuery", false);
 
 const allowedOrigins = [
-  'https://example1.com',
-  'https://example2.com',
-  'https://example3.com',
-  'https://www.hmsegg.com'
+  process.env.FRONTEND_URL
 ];
 
 // CORS options to match exact origins
