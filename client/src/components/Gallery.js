@@ -14,9 +14,9 @@ function Gallery({ place }) {
   };
 
   const images = [
-    "https://i.ibb.co/BfHrFBv/image1.jpg",
+    "https://i.ibb.co/SRhcVPs/Whats-App-Image-2024-07-03-at-16-48-09-d5f7f2ae.jpg",
     "https://i.ibb.co/XDWh3cq/image2.jpg",
-    "https://i.ibb.co/cQqHhZh/image3.jpg",
+    "https://i.ibb.co/k0BNpCF/Whats-App-Image-2024-07-03-at-16-48-33-8ded5849.jpg",
     "https://i.ibb.co/HKP5PFC/image4.jpg",
   ];
 
