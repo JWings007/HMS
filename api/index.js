@@ -14,14 +14,9 @@ mongoose.connect(mongoDB).then((res) => {
 
 mongoose.set("strictQuery", false);
 
-const allowedOrigins = [
-  process.env.FRONTEND_URL1,
-  process.env.FRONTEND_URL2,
-  process.env.FRONTEND_URL3
-]
 app.use(
   cors({
-    origin: allowedOrigins,
+    origin: process.env.FRONTEND_URL1,
     credentials: true,
   })
 );
