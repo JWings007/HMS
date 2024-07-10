@@ -35,7 +35,7 @@ function Footer() {
           <i className="fi fi-brands-twitter-alt-circle text-2xl hover:text-slate-500 cursor-pointer"></i>
         </div>
         <p className="mt-8 text-slate-600">
-          Copyright &copy;2024 All rights reserved
+          Copyright &copy;2024 All rights reserved. <span className="cursor-pointer hover:border-b-2 border-black transition-all duration-[50ms]" onClick={()=>navigate("/privacy-policy")}>Privacy Policy</span>
         </p>
       </div>
     </>

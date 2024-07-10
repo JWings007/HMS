@@ -9,6 +9,7 @@ import AdminDashboard from "./pages/AdminDashboard";
 import AdminRegister from "./pages/AdminRegister";
 import DesktopOnlyRoute from "./components/DesktopOnly";
 import MobileRestrict from "./pages/MobileRestrict";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 
 function App() {
   return (
@@ -41,7 +42,8 @@ function App() {
             </DesktopOnlyRoute>
           }
         />
-        <Route path="mobile-restricted" element={<MobileRestrict />} />
+        <Route path="/mobile-restricted" element={<MobileRestrict />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
       </Routes>
     </BrowserRouter>
   );

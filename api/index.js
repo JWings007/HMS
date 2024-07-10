@@ -18,6 +18,7 @@ const allowedOrigins = [
   'https://www.hmsegg.com',
   'https://hmsegg.com',
   'hmsegg.com',
+  'http://localhost:3000'
 ];
 
 // CORS options to match exact origins

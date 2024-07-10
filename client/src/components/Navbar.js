@@ -86,7 +86,7 @@ function Navbar({ setLoader }) {
           </li>
         </ul>
         <p className="vsm:text-sm">
-          Copyright &copy; 2024. HMS Egg Distributions
+          Copyright &copy; 2024. HMS Egg Distributors.
         </p>
       </div>
       <h1 className="font-bold text-2xl lg:hidden">HMS EGG DISTRIBUTORS.</h1>
