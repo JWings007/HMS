@@ -66,8 +66,7 @@ function Contact() {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  3rd Main Rd, Vinayaka Extension, Nayanda Halli, Bengaluru,
-                  Karnataka - 560039
+                  No #117, 4th cross, Ajij Sait Industrial Area, NayandaHalli Bengaluru - 560039.
                 </a>
               </div>
               <div className="flex gap-5">
