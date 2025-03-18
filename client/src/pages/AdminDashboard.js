@@ -344,7 +344,7 @@ function AdminDashboard() {
                             <p>
                               {" "}
                               <span className="text-red-400">₹</span>{" "}
-                              {item.price.toFixed(2)}
+                              {item.price?.toFixed(2)}
                             </p>
                           )}
                         </td>
@@ -354,7 +354,7 @@ function AdminDashboard() {
                           } py-3 md:px-0 md:py-4 sm:text-xs`}
                         >
                           <span className="text-red-400">₹</span>{" "}
-                          {(item.price * 30).toFixed(2)}
+                          {(item.price * 30)?.toFixed(2)}
                         </td>
                         <td
                           className={`text-center ${
@@ -362,7 +362,7 @@ function AdminDashboard() {
                           } py-3 md:px-0 md:py-4 sm:text-xs`}
                         >
                           <span className="text-red-400">₹</span>{" "}
-                          {(item.price * 100).toFixed(2)}
+                          {(item.price * 100)?.toFixed(2)}
                         </td>
                         <td
                           className={`text-center ${
@@ -370,7 +370,7 @@ function AdminDashboard() {
                           } py-3 md:px-0 md:py-4 sm:text-xs`}
                         >
                           <span className="text-red-400">₹</span>{" "}
-                          {(item.price * 210).toFixed(2)}
+                          {(item.price * 210)?.toFixed(2)}
                         </td>
                         <td
                           className={`text-center ${

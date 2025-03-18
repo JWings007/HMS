@@ -65,7 +65,7 @@ function Home() {
             <div className="bg-green-200 px-32 py-8 mt-10 rounded-lg md:px-8 sm:py-5 sm:w-full xs:hidden">
               <h3 className="font-bold text-4xl md:text-2xl sm:text-xl text-center leading-[50px]">
                 NECC Egg Rate In Bengaluru Today :{" "}
-                <span className="text-amber-500">₹ {eggData[0]?.price.toFixed(2)}</span>
+                <span className="text-amber-500">₹ {eggData[0]?.price?.toFixed(2)}</span>
               </h3>
             </div>
           ) : null}
@@ -76,7 +76,7 @@ function Home() {
                 NECC Egg Rate In Bengaluru Today :
               </h3>
               <h3 className="font-bold text-4xl md:text-2xl sm:text-xl text-center text-amber-500">
-                ₹ {eggData[0]?.price.toFixed(2)}
+                ₹ {eggData[0]?.price?.toFixed(2)}
               </h3>
             </div>
           ) : null}
@@ -179,7 +179,7 @@ function Home() {
               </tr>
             </thead>
             <tbody>
-              {eggData.map((item, i) => {
+              { eggData && eggData?.map((item, i) => {
                 return (
                   <tr key={i}>
                     <td
@@ -195,7 +195,7 @@ function Home() {
                       } py-5 md:px-0 md:py-4 sm:text-xs`}
                     >
                       <span className="text-red-300">₹</span>{" "}
-                      {item.price.toFixed(2)}
+                      {item.price?.toFixed(2)}
                     </td>
                     <td
                       className={`text-center ${
@@ -203,7 +203,7 @@ function Home() {
                       } py-5 md:px-0 md:py-4 sm:text-xs`}
                     >
                       <span className="text-red-300">₹</span>{" "}
-                      {(item.price * 30).toFixed(2)}
+                      {(item.price * 30)?.toFixed(2)}
                     </td>
                     <td
                       className={`text-center ${
@@ -211,7 +211,7 @@ function Home() {
                       } py-5 md:px-0 md:py-4 sm:text-xs`}
                     >
                       <span className="text-red-300">₹</span>{" "}
-                      {(item.price * 100).toFixed(2)}
+                      {(item.price * 100)?.toFixed(2)}
                     </td>
                     <td
                       className={`text-center ${
@@ -219,7 +219,7 @@ function Home() {
                       } py-5 md:px-0 md:py-4 sm:text-xs`}
                     >
                       <span className="text-red-300">₹</span>{" "}
-                      {(item.price * 210).toFixed(2)}
+                      {(item.price * 210)?.toFixed(2)}
                     </td>
                   </tr>
                 );
