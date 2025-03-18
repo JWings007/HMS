@@ -1,13 +1,22 @@
 import React from "react";
-import Lottie from 'react-lottie'
-import loader from '../assets/images/Loader.json'
+import Lottie from "react-lottie";
+import loader from "../assets/images/Loader.json";
 
 function Loader({ loaderState }) {
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: loader,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
+
   if (loaderState)
     return (
       <div className="w-full h-screen fixed top-0 z-[999] flex items-center justify-center bg-white">
         <div className="loader w-32">
-          <Lottie animationData={loader} loop={true}/>
+          <Lottie options={defaultOptions} />
         </div>
       </div>
     );
