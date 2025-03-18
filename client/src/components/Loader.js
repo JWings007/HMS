@@ -1,6 +1,6 @@
 import React from "react";
 import Lottie from 'react-lottie'
-import loader from '/Images/Loader.json'
+import loader from '../assets/images/Loader.json'
 
 function Loader({ loaderState }) {
   if (loaderState)
