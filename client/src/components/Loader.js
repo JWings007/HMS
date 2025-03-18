@@ -15,7 +15,7 @@ function Loader({ loaderState }) {
   if (loaderState)
     return (
       <div className="w-full h-screen fixed top-0 z-[999] flex items-center justify-center bg-white">
-        <div className="loader w-32">
+        <div className="loader w-56">
           <Lottie options={defaultOptions} />
         </div>
       </div>
