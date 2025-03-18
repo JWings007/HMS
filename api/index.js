@@ -20,7 +20,7 @@ const allowedOrigins = [
   'hmsegg.com',
   'http://localhost:3000',
   'https://todayseggrate.com',
-  'https://todayseggrate.com'
+  'https://eggdealer.in'
 ];
 
 // CORS options to match exact origins
