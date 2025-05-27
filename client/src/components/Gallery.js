@@ -14,10 +14,11 @@ function Gallery({ place }) {
   };
 
   const images = [
-    "https://i.ibb.co/SRhcVPs/Whats-App-Image-2024-07-03-at-16-48-09-d5f7f2ae.jpg",
-    "https://i.ibb.co/XDWh3cq/image2.jpg",
-    "https://i.ibb.co/k0BNpCF/Whats-App-Image-2024-07-03-at-16-48-33-8ded5849.jpg",
-    "https://i.ibb.co/HKP5PFC/image4.jpg",
+    "https://res.cloudinary.com/dp35re9sa/image/upload/f_auto,q_auto/v1/HMS/bbznrc67xhubyfozlinp", "https://res.cloudinary.com/dp35re9sa/image/upload/f_auto,q_auto/v1/HMS/jpb5rdgkipyn6bsanbsh", "https://res.cloudinary.com/dp35re9sa/image/upload/f_auto,q_auto/v1/HMS/xnj2rnw84lygt7nrdjvk", "https://res.cloudinary.com/dp35re9sa/image/upload/f_auto,q_auto/v1/HMS/ztwhjxlvobnjbvjdbzye",
+"https://res.cloudinary.com/dp35re9sa/image/upload/f_auto,q_auto/v1/HMS/bd1wa4yhwhqqhvqiaj34",
+"https://res.cloudinary.com/dp35re9sa/image/upload/f_auto,q_auto/v1/HMS/jpb5rdgkipyn6bsanbsh",
+"https://res.cloudinary.com/dp35re9sa/image/upload/f_auto,q_auto/v1/HMS/xc6onfzm9og2tzuavuhu",
+"https://res.cloudinary.com/dp35re9sa/image/upload/f_auto,q_auto/v1/HMS/dmi08zjct9pa8rv5kjlz"
   ];
 
   return (
