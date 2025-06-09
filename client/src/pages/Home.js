@@ -231,20 +231,6 @@ function Home() {
       <div className="w-full">
         <Gallery />
       </div>
-          <div className="flex justify-center mt-10">
-  <a
-    href="https://play.google.com/store/apps/details?id=com.hmsegg.eggport"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    <img
-      src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
-      alt="Get it on Google Play"
-      className="h-16 md:h-12 transition-transform duration-200 hover:scale-105"
-    />
-  </a>
-</div>
-
       <div>
         <Footer />
       </div>
