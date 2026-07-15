@@ -16,12 +16,12 @@ function Home() {
   useEffect(() => {
     const fetchEggDeatils = async () => {
       setLoaderState(true);
-      const allEgg = await axios.get(`/user/egg-data`);
+      const allEgg = await axios.get(`/api/user/egg-data`);
       if (allEgg) {
         setEggData(allEgg.data);
       }
 
-      const varients = await axios.get(`/user/all-egg-data`);
+      const varients = await axios.get(`/api/user/all-egg-data`);
       if (varients) {
         setBrownVerity(
           varients.data.filter((v) => {
@@ -42,7 +42,7 @@ function Home() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = "Hms Egg Distributors | Home";
+    document.title = "Hms Egg Product Distributors | Home";
   }, [pathname]);
 
   return (
@@ -59,7 +59,7 @@ function Home() {
         />
         <div className="flex flex-col items-center z-10">
           <h1 className="text-center text-green-400 font-bold text-7xl sm:text-6xl vsm:text-[2.8rem]">
-            HMS EGG DISTRIBUTORS
+            HMS EGG PRODUCT DISTRIBUTORS
           </h1>
           {eggData ? (
             <div className="bg-green-200 px-32 py-8 mt-10 rounded-lg md:px-8 sm:py-5 sm:w-full xs:hidden">

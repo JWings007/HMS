@@ -34,7 +34,7 @@ function About() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = 'Hms Egg Distributors | About'
+    document.title = 'Hms Egg Product Distributors | About'
   }, [pathname]);
 
   return (

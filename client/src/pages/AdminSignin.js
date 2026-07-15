@@ -26,7 +26,7 @@ function AdminSignin() {
     e.preventDefault();
     try {
       const res = await axios.post(
-        `/auth/login`,
+        `/api/auth/login`,
         {
           username,
           password,
@@ -57,7 +57,7 @@ function AdminSignin() {
 
   useEffect(() => {
     const authCheck = async () => {
-      const res = await axios.get(`/auth/authcheck`, {
+      const res = await axios.get(`/api/auth/authcheck`, {
         withCredentials: true,
       });
       if (res.data.authenticated) navigate("/admin/dashboard");

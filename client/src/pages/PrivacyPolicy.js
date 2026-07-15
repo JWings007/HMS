@@ -6,7 +6,7 @@ const [activeSection, setActiveSection] = useState("terms");
     <div className="min-h-screen bg-[#E7F7E6] flex flex-col items-center justify-start p-6 font-sans">
       {/* Header */}
       <h1 className="text-[28px] font-bold text-[#28A745] uppercase mb-6">
-        HMS EGG DISTRIBUTORS - Legal Policies
+        HMS EGG PRODUCT DISTRIBUTORS - Legal Policies
       </h1>
 
       {/* Navigation Buttons */}

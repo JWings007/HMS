@@ -27,7 +27,7 @@ function AdminDashboard() {
     e.preventDefault();
     if (type === "daily") {
       const res = await axios.post(
-        `/user/update-daily`,
+        `/api/user/update-daily`,
         {
           date: `${date.getDate()}-${
             date.getMonth() + 1
@@ -44,7 +44,7 @@ function AdminDashboard() {
       setLoaderState(false);
     } else {
       const res = await axios.post(
-        `/user/update-all/${type}`,
+        `/api/user/update-all/${type}`,
         { large, medium, small, bullet },
         {
           withCredentials: true,
@@ -60,7 +60,7 @@ function AdminDashboard() {
     setLoaderState(true);
     try {
       const res = await axios.patch(
-        "/user/update-price",
+        "/api/user/update-price",
         { id, newPrice: updatedPrice },
         {
           withCredentials: true,
@@ -84,7 +84,7 @@ function AdminDashboard() {
     try {
       console.log(id);
       const res = await axios.put(
-        "/user/delete-price",
+        "/api/user/delete-price",
         { id },
         {
           withCredentials: true,
@@ -117,7 +117,7 @@ function AdminDashboard() {
   useEffect(() => {
     setLoaderState(true);
     const authCheck = async () => {
-      const res = await axios.get("/auth/authcheck", {
+      const res = await axios.get("/api/auth/authcheck", {
         withCredentials: true,
       });
       if (res.data.authenticated) {
@@ -128,7 +128,7 @@ function AdminDashboard() {
     };
 
     const getEggdata = async () => {
-      const res = await axios.get("/user/egg-data", {
+      const res = await axios.get("/api/user/egg-data", {
         withCredentials: true,
       });
       if (res.data) setEggData(res.data);

@@ -27,7 +27,7 @@ function AdminRegister() {
     setLoaderState(true);
     e.preventDefault();
     try {
-      const res = await axios.post(`/auth/register`, {
+      const res = await axios.post(`/api/auth/register`, {
         name,
         username,
         password,
