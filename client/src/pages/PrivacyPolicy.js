@@ -6,7 +6,7 @@ const [activeSection, setActiveSection] = useState("terms");
     <div className="min-h-screen bg-[#E7F7E6] flex flex-col items-center justify-start p-6 font-sans">
       {/* Header */}
       <h1 className="text-[28px] font-bold text-[#28A745] uppercase mb-6">
-        HMS EGG PRODUCT DISTRIBUTORS - Legal Policies
+        HMS EGG DISTRIBUTORS - Legal Policies
       </h1>
 
       {/* Navigation Buttons */}
@@ -52,7 +52,8 @@ const [activeSection, setActiveSection] = useState("terms");
               <strong>Effective Date:</strong> 10 March 2025
             </p>
             <p className="text-sm mb-2">
-              We value your privacy. This Privacy Policy outlines how HMS EGG PRODUCT DISTRIBUTORS collects, uses, and protects your personal data.
+              We value your privacy. This Privacy Policy outlines how HMS Egg
+              Distributors collects, uses, and protects your personal data.
             </p>
             <ul className="list-disc pl-5 text-sm">
               <li>

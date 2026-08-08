@@ -51,7 +51,7 @@ function About() {
             <p className="text-black">
               Welcome to{" "}
               <span className="font-bold text-green-500">
-                HMS EGG PRODUCT DISTRIBUTORS
+                HMS EGG DISTRIBUTORS
               </span>
               , your trusted source for premium-quality eggs. Founded with a
               passion for delivering freshness and flavor to every table, we are
@@ -94,7 +94,7 @@ function About() {
                 sourcing. Experience the difference that fresh, locally sourced
                 eggs can make in your meals. Thank you for choosing{" "}
                 <span className="font-bold text-green-500">
-                  HMS EGG PRODUCT DISTRIBUTORS
+                  HMS EGG DISTRIBUTORS
                 </span>{" "}
                 — where quality, freshness, and customer satisfaction are our
                 top priorities.
