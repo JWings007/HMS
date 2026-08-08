@@ -45,7 +45,7 @@ function Gallery({ place }) {
           <p>
             At{" "}
             <span className="text-green-500 font-bold">
-              HMS EGG PRODUCT DISTRIBUTORS
+              HMS EGG DISTRIBUTORS
             </span>
             , we take pride in delivering the finest quality eggs to your
             doorstep. With a commitment to excellence, we ensure that each egg
@@ -62,7 +62,7 @@ function Gallery({ place }) {
         <p>
           Choosing{" "}
           <span className="text-green-500 font-bold">
-            HMS EGG PRODUCT DISTRIBUTORS
+            HMS EGG DISTRIBUTORS
           </span>{" "}
           means choosing reliability and quality. We offer flexible delivery
           options to ensure your eggs arrive fresh and on time. Whether you're a
@@ -72,7 +72,7 @@ function Gallery({ place }) {
           the difference that fresh, high-quality eggs can make in your daily
           meals. Experience the convenience and satisfaction of shopping with{" "}
           <span className="text-green-500 font-bold">
-            HMS EGG PRODUCT DISTRIBUTORS
+            HMS EGG DISTRIBUTORS
           </span>
           , where every egg is a testament to our commitment to your
           satisfaction and well-being.
