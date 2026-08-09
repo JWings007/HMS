@@ -45,7 +45,7 @@ function Navbar({ setLoader }) {
   return (
     <div className="w-full h-24 flex items-center justify-between px-20 md:px-10 fixed bg-white z-50 vsm:px-5 md:shadow-lg">
       <div className="justify-between w-full hidden lg:flex lg:relative">
-        <h1 className="font-bold text-2xl vsm:text-xl">HMS EGG DISTRIBUTORS.</h1>
+        <h1 className="font-bold text-2xl vsm:text-xl">HMS EGG PRODUCT DISTRIBUTORS.</h1>
         <i
           className="fi fi-rr-bars-sort cursor-pointer"
           onClick={() => setToggle(!toggle)}
@@ -86,10 +86,10 @@ function Navbar({ setLoader }) {
           </li>
         </ul>
         <p className="vsm:text-sm">
-          Copyright &copy; 2024. HMS Egg Distributors.
+          Copyright &copy; 2024. HMS Egg Product Distributors.
         </p>
       </div>
-      <h1 className="font-bold text-2xl lg:hidden">HMS EGG DISTRIBUTORS.</h1>
+      <h1 className="font-bold text-2xl lg:hidden">HMS EGG PRODUCT DISTRIBUTORS.</h1>
       <ul className="flex items-center justify-center gap-20 font-extralight lg:hidden">
         <li
           className={`text-3xl tracking-wider ${

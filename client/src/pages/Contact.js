@@ -22,7 +22,7 @@ function Contact() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = 'Hms Egg Distributors | Contact'
+    document.title = 'Hms Egg Product Distributors | Contact'
   }, [pathname]);
   return (
     <>

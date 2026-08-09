@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 import Loader from "../components/Loader";
 
 function AdminDashboard() {
-  const date = new Date();
   const [dailyEggPrice, setDailyEggPrice] = useState(0);
   const [type, setType] = useState("daily");
   const [eggData, setEggData] = useState();
@@ -20,18 +19,18 @@ function AdminDashboard() {
   const [message, setMessage] = useState("");
   const [editprice, setEditprice] = useState(null);
   const [updatedPrice, setUpdatedPrice] = useState(0);
-  const [updatedDate, setUpdatedDate] = useState(date.getDate());
 
   const handleUpdate = async (e) => {
     setLoaderState(true);
     e.preventDefault();
     if (type === "daily") {
+      const currentDate = new Date();
       const res = await axios.post(
         `/user/update-daily`,
         {
-          date: `${date.getDate()}-${
-            date.getMonth() + 1
-          }-${date.getFullYear()}`,
+          date: `${currentDate.getDate()}-${
+            currentDate.getMonth() + 1
+          }-${currentDate.getFullYear()}`,
           price: dailyEggPrice,
         },
         {
@@ -142,9 +141,7 @@ function AdminDashboard() {
     }
   }, [navigate]);
 
-  useEffect(() => {
-    setUpdatedDate(date.setDate(date.getDate() + 1));
-  }, [date]);
+
 
   return (
     <>
