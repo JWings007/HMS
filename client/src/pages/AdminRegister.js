@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 import { useNavigate } from "react-router-dom";
 import axios from "../api/axios";
 import Dialog from "../components/Dialog";
 import Loader from "../components/Loader";
+import { UserPlus, User, Lock, Key, ShieldCheck } from "lucide-react";
 
 function AdminRegister() {
   const navigate = useNavigate();
@@ -41,7 +43,7 @@ function AdminRegister() {
           setTimeout(() => {
             setLoaderState(false);
             navigate("/admin/login");
-          }, 20000);
+          }, 3000);
         }
       } else if (res.data.exists) {
         setLoaderState(false);
@@ -50,9 +52,10 @@ function AdminRegister() {
       }
     } catch (err) {
       setLoaderState(false);
-      console.log(err);
+      console.error(err);
     }
   };
+
   return (
     <>
       <Navbar />
@@ -62,64 +65,96 @@ function AdminRegister() {
         closeDialogState={closeDialogState}
       />
       <Loader loaderState={loaderState} />
-      <div className="pt-28 h-screen flex flex-col items-center justify-center  gap-14 md:pt-0">
-        <div className="bg-slate-50 p-20 rounded-lg md:p-10">
-          <h1 className="font-bold text-2xl mb-5 text-center">
-            Create account
-          </h1>
-          <p className="mb-2 text-slate-400 text-center text-sm">
-            Don't have an account create one
-          </p>
-          <div>
-            <form
-              method="POST"
-              className="flex flex-col items-center justify-center gap-4"
-              onSubmit={handleSubmit}
-            >
-              <input
-                type="text"
-                placeholder="Name"
-                className="text-sm outline-none bg-slate-200 h-11 w-80 pl-6 rounded-lg"
-                required
-                onChange={(e) => setName(e.target.value)}
-              />
-              <input
-                type="text"
-                placeholder="Username"
-                className="text-sm outline-none bg-slate-200 h-11 w-80 pl-6 rounded-lg"
-                required
-                onChange={(e) => setUserName(e.target.value)}
-              />
-              <input
-                type="text"
-                placeholder="Admin Key"
-                className="text-sm outline-none bg-slate-200 h-11 w-80 pl-6 rounded-lg"
-                required
-                onChange={(e) => setAdminKey(e.target.value)}
-              />
-              <input
-                type="password"
-                placeholder="Password"
-                className="text-sm outline-none bg-slate-200 h-11 w-80 pl-6 rounded-lg"
-                required
-                onChange={(e) => setPassword(e.target.value)}
-              />
-              <p className="text-sm">
-                Already have an account?{" "}
-                <span
-                  className="text-green-500 cursor-pointer"
-                  onClick={() => navigate("/admin/login")}
-                >
-                  Login
-                </span>
-              </p>
-              <button className="bg-green-300 px-10 py-3 hover:bg-green-400 transition-all rounded-lg">
-                Create
-              </button>
-            </form>
+      
+      <main className="min-h-screen bg-slate-50 pt-28 pb-16 flex items-center justify-center px-6">
+        <div className="w-full max-w-md glass-card rounded-3xl p-8 border border-emerald-500/20 shadow-2xl flex flex-col gap-6">
+          
+          <div className="flex flex-col items-center text-center gap-2">
+            <div className="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold mb-1 shadow-inner">
+              <UserPlus className="w-6 h-6" />
+            </div>
+            <h1 className="text-2xl font-bold text-slate-900">Create Admin Account</h1>
+            <p className="text-xs text-slate-500 font-medium">
+              Enter authorized administrator registration details
+            </p>
           </div>
+
+          <form onSubmit={handleSubmit} className="flex flex-col gap-3.5">
+            <div className="flex flex-col gap-1">
+              <label className="text-xs font-bold text-slate-700">Full Name</label>
+              <div className="relative">
+                <User className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                <input
+                  type="text"
+                  placeholder="Enter full name"
+                  className="w-full bg-slate-100 border border-slate-300 font-semibold px-4 py-3 pl-10 rounded-xl focus:outline-none focus:border-emerald-500 text-xs"
+                  onChange={(e) => setName(e.target.value)}
+                  required
+                />
+              </div>
+            </div>
+
+            <div className="flex flex-col gap-1">
+              <label className="text-xs font-bold text-slate-700">Username</label>
+              <div className="relative">
+                <User className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                <input
+                  type="text"
+                  placeholder="Choose username"
+                  className="w-full bg-slate-100 border border-slate-300 font-semibold px-4 py-3 pl-10 rounded-xl focus:outline-none focus:border-emerald-500 text-xs"
+                  onChange={(e) => setUserName(e.target.value)}
+                  required
+                />
+              </div>
+            </div>
+
+            <div className="flex flex-col gap-1">
+              <label className="text-xs font-bold text-slate-700">Admin Secret Key</label>
+              <div className="relative">
+                <Key className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                <input
+                  type="text"
+                  placeholder="Enter secret authorization key"
+                  className="w-full bg-slate-100 border border-slate-300 font-semibold px-4 py-3 pl-10 rounded-xl focus:outline-none focus:border-emerald-500 text-xs"
+                  onChange={(e) => setAdminKey(e.target.value)}
+                  required
+                />
+              </div>
+            </div>
+
+            <div className="flex flex-col gap-1">
+              <label className="text-xs font-bold text-slate-700">Password</label>
+              <div className="relative">
+                <Lock className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                <input
+                  type="password"
+                  placeholder="Create password"
+                  className="w-full bg-slate-100 border border-slate-300 font-semibold px-4 py-3 pl-10 rounded-xl focus:outline-none focus:border-emerald-500 text-xs"
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+              </div>
+            </div>
+
+            <button className="w-full py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs tracking-wide shadow-md shadow-emerald-600/20 transition-all flex items-center justify-center gap-2 mt-2">
+              <ShieldCheck className="w-4 h-4" />
+              <span>Register Account</span>
+            </button>
+          </form>
+
+          <div className="text-center pt-4 border-t border-slate-200 text-xs text-slate-500">
+            Already have an account?{" "}
+            <span
+              onClick={() => navigate("/admin/login")}
+              className="font-bold text-emerald-600 hover:underline cursor-pointer"
+            >
+              Sign In
+            </span>
+          </div>
+
         </div>
-      </div>
+      </main>
+      <Footer />
     </>
   );
 }
