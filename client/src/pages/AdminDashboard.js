@@ -17,6 +17,7 @@ import {
 
 function AdminDashboard() {
   const [dailyEggPrice, setDailyEggPrice] = useState(0);
+  const [selectedDate, setSelectedDate] = useState("");
   const [type, setType] = useState("daily");
   const [eggData, setEggData] = useState([]);
   const navigate = useNavigate();
@@ -35,13 +36,11 @@ function AdminDashboard() {
     e.preventDefault();
     try {
       if (type === "daily") {
-        const currentDate = new Date();
+        const [year, month, day] = selectedDate.split("-");
         const res = await axios.post(
           `/user/update-daily`,
           {
-            date: `${currentDate.getDate()}-${
-              currentDate.getMonth() + 1
-            }-${currentDate.getFullYear()}`,
+            date: `${parseInt(day)}-${parseInt(month)}-${year}`,
             price: dailyEggPrice,
           },
           { withCredentials: true }
@@ -279,20 +278,32 @@ function AdminDashboard() {
               {/* Form Input Section */}
               {type === "daily" ? (
                 <form onSubmit={handleUpdate} className="flex flex-col gap-4 pt-2 border-t border-slate-200">
-                  <div className="flex flex-col gap-1.5">
-                    <label className="text-xs font-bold text-slate-700">Today's Single Egg Rate (₹ / piece)</label>
-                    <input
-                      type="number"
-                      step="0.01"
-                      placeholder="e.g. 5.50"
-                      onChange={(e) => setDailyEggPrice(e.target.value)}
-                      className="w-full bg-slate-100 border border-slate-300 font-bold text-slate-900 px-4 py-3 rounded-xl focus:outline-none focus:border-emerald-500 text-sm"
-                      required
-                    />
+                  <div className="grid grid-cols-2 gap-3">
+                    <div className="flex flex-col gap-1.5">
+                      <label className="text-xs font-bold text-slate-700">Single Egg Rate (₹ / piece)</label>
+                      <input
+                        type="number"
+                        step="0.01"
+                        placeholder="e.g. 5.50"
+                        onChange={(e) => setDailyEggPrice(e.target.value)}
+                        className="w-full bg-slate-100 border border-slate-300 font-bold text-slate-900 px-4 py-3 rounded-xl focus:outline-none focus:border-emerald-500 text-sm"
+                        required
+                      />
+                    </div>
+                    <div className="flex flex-col gap-1.5">
+                      <label className="text-xs font-bold text-slate-700">Rate Date</label>
+                      <input
+                        type="date"
+                        value={selectedDate}
+                        onChange={(e) => setSelectedDate(e.target.value)}
+                        className="w-full bg-slate-100 border border-slate-300 font-bold text-slate-900 px-4 py-3 rounded-xl focus:outline-none focus:border-emerald-500 text-sm"
+                        required
+                      />
+                    </div>
                   </div>
                   <button className="w-full py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs tracking-wide shadow-md shadow-emerald-600/20 transition-all flex items-center justify-center gap-2">
                     <PlusCircle className="w-4 h-4" />
-                    <span>Publish Today's Rate</span>
+                    <span>Publish Rate</span>
                   </button>
                 </form>
               ) : (
